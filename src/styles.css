@@ -1,0 +1,57 @@
+/*
+ * YouTube Shorts Disabler — Shorts 関連UIを非表示にするスタイル
+ * content.js が <html> に "ysd-hide-shorts" クラスを付与したときのみ適用される。
+ */
+
+/* --- サイドバー（ガイド／ミニガイド）の Shorts ナビ項目 --- */
+/* リンク先 /shorts ベースで言語非依存に対象化（最も確実） */
+html.ysd-hide-shorts ytd-guide-entry-renderer:has(a[href="/shorts"]),
+html.ysd-hide-shorts ytd-guide-entry-renderer:has(a[href^="/shorts"]),
+html.ysd-hide-shorts ytd-mini-guide-entry-renderer:has(a[href="/shorts"]),
+html.ysd-hide-shorts ytd-mini-guide-entry-renderer:has(a[href^="/shorts"]),
+html.ysd-hide-shorts ytd-mini-guide-entry-renderer:has(a[title="ショート"]),
+html.ysd-hide-shorts ytd-mini-guide-entry-renderer:has(a[title="Shorts"]),
+/* タイトル/aria-label ベースのフォールバック */
+html.ysd-hide-shorts ytd-guide-entry-renderer:has(a[title="ショート"]),
+html.ysd-hide-shorts ytd-guide-entry-renderer:has(a[title="Shorts"]),
+html.ysd-hide-shorts ytd-mini-guide-entry-renderer[aria-label="ショート"],
+html.ysd-hide-shorts ytd-mini-guide-entry-renderer[aria-label="Shorts"] {
+  display: none !important;
+}
+
+/* --- ホーム / 登録チャンネル等の Shorts 棚（リッチセクション） --- */
+html.ysd-hide-shorts ytd-rich-section-renderer:has(ytd-rich-shelf-renderer[is-shorts]),
+html.ysd-hide-shorts ytd-rich-shelf-renderer[is-shorts],
+html.ysd-hide-shorts ytd-reel-shelf-renderer,
+html.ysd-hide-shorts ytd-rich-shelf-renderer:has([overlay-style="SHORTS"]) {
+  display: none !important;
+}
+
+/* --- 検索結果内の Shorts 棚 --- */
+html.ysd-hide-shorts ytd-item-section-renderer:has(ytd-reel-shelf-renderer),
+html.ysd-hide-shorts grid-shelf-view-model:has(a[href^="/shorts"]) {
+  display: none !important;
+}
+
+/* --- 個別の Shorts サムネイル（リンク先が /shorts/ のもの） --- */
+html.ysd-hide-shorts ytd-video-renderer:has(a[href^="/shorts/"]),
+html.ysd-hide-shorts ytd-grid-video-renderer:has(a[href^="/shorts/"]),
+html.ysd-hide-shorts ytd-rich-item-renderer:has(a[href^="/shorts/"]),
+html.ysd-hide-shorts ytm-shorts-lockup-view-model,
+html.ysd-hide-shorts ytm-shorts-lockup-view-model-v2 {
+  display: none !important;
+}
+
+/* --- チャンネルページの Shorts タブ --- */
+html.ysd-hide-shorts yt-tab-shape[tab-title="ショート"],
+html.ysd-hide-shorts yt-tab-shape[tab-title="Shorts"],
+html.ysd-hide-shorts tp-yt-paper-tab:has(> .tab-content[title="ショート"]),
+html.ysd-hide-shorts tp-yt-paper-tab:has(> .tab-content[title="Shorts"]) {
+  display: none !important;
+}
+
+/* --- 動画視聴ページ下部「ショート」関連エントリ --- */
+html.ysd-hide-shorts ytd-reel-shelf-renderer,
+html.ysd-hide-shorts ytd-compact-movie-renderer:has(a[href^="/shorts/"]) {
+  display: none !important;
+}

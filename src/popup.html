@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>YouTube Shorts Disabler</title>
+    <style>
+      :root {
+        color-scheme: light dark;
+        --bg: #ffffff;
+        --fg: #0f0f0f;
+        --sub: #606060;
+        --accent: #cc0000;
+        --border: #e5e5e5;
+        --track: #ccc;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --bg: #212121;
+          --fg: #f1f1f1;
+          --sub: #aaaaaa;
+          --border: #3a3a3a;
+          --track: #555;
+        }
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        width: 280px;
+        font-family: "Segoe UI", "Yu Gothic UI", system-ui, sans-serif;
+        background: var(--bg);
+        color: var(--fg);
+      }
+      header {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 14px 16px;
+        border-bottom: 1px solid var(--border);
+      }
+      header .dot {
+        width: 22px;
+        height: 22px;
+        border-radius: 6px;
+        background: var(--accent);
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+        font-size: 13px;
+        font-weight: 700;
+      }
+      header h1 { font-size: 14px; margin: 0; font-weight: 600; }
+      .row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        padding: 14px 16px;
+      }
+      .row + .row { border-top: 1px solid var(--border); }
+      .label { font-size: 13px; }
+      .label small { display: block; color: var(--sub); font-size: 11px; margin-top: 2px; }
+      /* トグルスイッチ */
+      .switch { position: relative; width: 42px; height: 24px; flex: 0 0 auto; }
+      .switch input { opacity: 0; width: 0; height: 0; }
+      .slider {
+        position: absolute; inset: 0; cursor: pointer;
+        background: var(--track); border-radius: 24px; transition: 0.2s;
+      }
+      .slider::before {
+        content: ""; position: absolute; height: 18px; width: 18px;
+        left: 3px; top: 3px; background: #fff; border-radius: 50%; transition: 0.2s;
+      }
+      .switch input:checked + .slider { background: var(--accent); }
+      .switch input:checked + .slider::before { transform: translateX(18px); }
+      .switch input:disabled + .slider { opacity: 0.45; cursor: not-allowed; }
+      footer { padding: 10px 16px; font-size: 11px; color: var(--sub); border-top: 1px solid var(--border); }
+    </style>
+  </head>
+  <body>
+    <header>
+      <span class="dot">S</span>
+      <h1>YouTube Shorts Disabler</h1>
+    </header>
+
+    <div class="row">
+      <div class="label">
+        ショートを無効化
+        <small>UIから Shorts を非表示にします</small>
+      </div>
+      <label class="switch">
+        <input type="checkbox" id="enabled" />
+        <span class="slider"></span>
+      </label>
+    </div>
+
+    <div class="row">
+      <div class="label">
+        ショートURLをリダイレクト
+        <small>/shorts/… を YouTube トップへ転送</small>
+      </div>
+      <label class="switch">
+        <input type="checkbox" id="redirect" />
+        <span class="slider"></span>
+      </label>
+    </div>
+
+    <footer>変更後は開いている YouTube タブを再読み込みしてください。</footer>
+
+    <script src="popup.js"></script>
+  </body>
+</html>

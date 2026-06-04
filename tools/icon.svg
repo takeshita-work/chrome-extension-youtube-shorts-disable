@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-200 -200 400 400" width="400" height="400">
+  <!--
+    Single shape master. Colors come from CSS variables so the renderer can
+    inject a COLOR set (enabled) or a GRAY set (disabled) at render time.
+    Fallbacks make this file look correct when opened on its own.
+    Shape: two horizontal capsules (width 240, height 100, rx 50 ; D=100),
+    tilted 30deg counter-clockwise, stacked with center overlap,
+    plus a prohibition slash from top-left to bottom-right.
+  -->
+  <g style="fill:var(--logo,#FF0000)">
+    <g transform="translate(0,-50) rotate(-30)">
+      <rect x="-120" y="-50" width="240" height="100" rx="50"/>
+    </g>
+    <g transform="translate(0,50) rotate(-30)">
+      <rect x="-120" y="-50" width="240" height="100" rx="50"/>
+    </g>
+  </g>
+  <!-- Prohibition slash (top-left -> bottom-right): thin white casing + core -->
+  <line x1="-110" y1="-110" x2="110" y2="110"
+        style="stroke:var(--casing,#FFFFFF)" stroke-width="40" stroke-linecap="round"/>
+  <line x1="-110" y1="-110" x2="110" y2="110"
+        style="stroke:var(--slash,#202020)" stroke-width="26" stroke-linecap="round"/>
+</svg>
